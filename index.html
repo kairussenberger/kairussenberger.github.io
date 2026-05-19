@@ -15,55 +15,54 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 56px 28px 120px;
     line-height: 1.65;
     color: #1a1a1a;
     background: #ffffff;
-    position: relative;
-    overflow-x: hidden;
     font-size: 14.5px;
     font-weight: 400;
 }
 
-/* ---------- top navigation ---------- */
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 28px 120px;
+}
+
+/* ---------- sticky top nav ---------- */
 .topnav {
-    display: flex;
-    gap: 28px;
-    margin-bottom: 64px;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
     position: sticky;
     top: 0;
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    padding: 16px 0;
-    margin-top: -16px;
     z-index: 10;
+    display: flex;
+    gap: 28px;
+    padding: 24px 0;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 48px;
 }
 
 .topnav a {
     color: #999;
     text-decoration: none;
-    padding-bottom: 4px;
+    padding-bottom: 3px;
     border-bottom: 1px solid transparent;
     transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-.topnav a:hover { color: #1a1a1a; opacity: 1; }
+.topnav a:hover { color: #1a1a1a; }
 
 .topnav a.active {
     color: #b30000;
     border-bottom-color: #b30000;
 }
 
-/* offset for sticky nav when jumping to anchors */
+/* offset anchors for sticky nav */
 section[id] { scroll-margin-top: 80px; }
 
-/* ---------- section labels ---------- */
+/* ---------- typography ---------- */
 .eyebrow {
     font-size: 11px;
     font-weight: 500;
@@ -93,25 +92,14 @@ h2 {
     margin: 56px 0 18px;
 }
 
-p {
-    margin: 14px 0;
-    color: #333;
-    font-size: 14.5px;
-}
-
-a {
-    color: #b30000;
-    text-decoration: none;
-    transition: opacity 0.15s ease;
-}
-
+p { margin: 14px 0; color: #333; }
+a { color: #b30000; text-decoration: none; transition: opacity 0.15s ease; }
 a:hover { opacity: 0.6; }
 
 /* ---------- section spacing ---------- */
-section { margin-bottom: 88px; }
-section:last-of-type { margin-bottom: 0; }
+section { padding: 32px 0 56px; }
 
-/* ---------- about (with photo) ---------- */
+/* ---------- about ---------- */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 180px;
@@ -125,7 +113,6 @@ section:last-of-type { margin-bottom: 0; }
     object-fit: cover;
     border-radius: 4px;
     background: #f3f3f3;
-    filter: grayscale(8%);
 }
 
 .contact-links {
@@ -138,7 +125,7 @@ section:last-of-type { margin-bottom: 0; }
 
 .contact-links a::before { content: "↗ "; color: #b30000; }
 
-/* ---------- project list ---------- */
+/* ---------- projects list ---------- */
 .project-list { border-top: 1px solid #eaeaea; }
 
 .project-item {
@@ -163,11 +150,7 @@ section:last-of-type { margin-bottom: 0; }
 .project-desc { color: #666; font-size: 13px; margin-top: 4px; }
 
 /* ---------- education boxes ---------- */
-.edu-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
+.edu-list { display: flex; flex-direction: column; gap: 14px; }
 
 .edu-box {
     border: 1px solid #eaeaea;
@@ -189,27 +172,22 @@ section:last-of-type { margin-bottom: 0; }
     margin-bottom: 6px;
 }
 
-.edu-institution {
-    font-weight: 600;
-    font-size: 14.5px;
-    color: #1a1a1a;
-}
-
+.edu-institution { font-weight: 600; font-size: 14.5px; color: #1a1a1a; }
 .edu-dates { font-size: 12px; color: #999; }
+.edu-degree { font-size: 13px; color: #b30000; margin-bottom: 8px; }
+.edu-desc { font-size: 13px; color: #555; margin: 0; }
 
-.edu-degree {
-    font-size: 13px;
-    color: #b30000;
-    margin-bottom: 8px;
+/* ---------- project detail overlay ---------- */
+.detail-view {
+    display: none;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 120px;
 }
 
-.edu-desc {
-    font-size: 13px;
-    color: #555;
-    margin: 0;
-}
+.detail-view.active { display: block; }
+.main-page.hidden { display: none; }
 
-/* ---------- project detail ---------- */
 .back-link {
     display: inline-block;
     margin-bottom: 36px;
@@ -242,30 +220,24 @@ section:last-of-type { margin-bottom: 0; }
     font-size: 12px;
 }
 
-/* ---------- view routing for project detail pages ---------- */
-.detail-view { display: none; }
-.detail-view.active { display: block; }
-.main-content.hidden { display: none; }
-
 /* ---------- particles ---------- */
 #particle-bg {
     position: fixed;
     top: 0; left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     z-index: -1;
     pointer-events: none;
 }
 
 /* ---------- responsive ---------- */
 @media (max-width: 560px) {
-    body { padding: 40px 22px 80px; font-size: 14px; }
+    .container, .detail-view { padding-left: 22px; padding-right: 22px; }
+    body { font-size: 14px; }
     h1 { font-size: 26px; }
     .about-grid { grid-template-columns: 1fr; gap: 24px; }
     .about-photo { max-width: 200px; aspect-ratio: 1; }
     .project-item { grid-template-columns: 56px 1fr; gap: 12px; }
     .topnav { gap: 20px; }
-    section { margin-bottom: 64px; }
 }
 </style>
 </head>
@@ -273,124 +245,123 @@ section:last-of-type { margin-bottom: 0; }
 
 <canvas id="particle-bg"></canvas>
 
-<!-- ========== TOP NAV ========== -->
-<nav class="topnav">
-    <a href="#about" data-tab="about">about</a>
-    <a href="#projects" data-tab="projects">projects</a>
-    <a href="#education" data-tab="education">education</a>
-</nav>
+<!-- ========== MAIN SCROLLABLE PAGE ========== -->
+<div class="main-page" id="main">
+    <div class="container">
 
+        <nav class="topnav">
+            <a href="#about" data-tab="about">about</a>
+            <a href="#projects" data-tab="projects">projects</a>
+            <a href="#education" data-tab="education">education</a>
+        </nav>
 
-<!-- ========== MAIN (single scrollable page) ========== -->
-<div class="main-content" id="main">
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="eyebrow">introduction</div>
+            <h1>Kai Russenberger</h1>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="eyebrow">introduction</div>
-        <h1>Kai Russenberger</h1>
-
-        <div class="about-grid">
-            <div>
-                <p>
-                    I'm a Mechanical Engineering student at <a href="https://ethz.ch" target="_blank" rel="noopener">ETH Zürich</a>, focused on the intersection of robotic hardware, control, and machine learning. I enjoy taking robotic systems from the first sketch on paper all the way to a working prototype.
-                </p>
-                <p>
-                    I currently work as a hardware engineer in the Robot Learning division of the ETH Robotics Club, where I help design and build bimanual humanoid platforms for imitation-learning research. Outside of that, I build my own robotic projects to keep learning across mechanical design, electronics, and control.
-                </p>
-            </div>
-            <img src="me.png" alt="Kai Russenberger" class="about-photo">
-        </div>
-
-        <div class="contact-links">
-            <a href="mailto:krussenberge@student.ethz.ch">email</a>
-            <a href="https://github.com/kairussenberger" target="_blank" rel="noopener">github</a>
-            <a href="https://www.linkedin.com/in/kai-russenberger-a4682b249/" target="_blank" rel="noopener">linkedin</a>
-            <a href="cv.pdf" target="_blank" rel="noopener">cv</a>
-        </div>
-    </section>
-
-
-    <!-- PROJECTS -->
-    <section id="projects">
-        <div class="eyebrow">selected works</div>
-        <h1>Projects</h1>
-
-        <div class="project-list">
-
-            <a href="#hexapod" class="project-item">
-                <span class="project-year">2025</span>
+            <div class="about-grid">
                 <div>
-                    <div class="project-title">Hexapod</div>
-                    <div class="project-desc">Six-legged walking robot — mechanical design, electronics, and gait control.</div>
+                    <p>
+                        I'm a Mechanical Engineering student at <a href="https://ethz.ch" target="_blank" rel="noopener">ETH Zürich</a>, focused on the intersection of robotic hardware, control, and machine learning. I enjoy taking robotic systems from the first sketch on paper all the way to a working prototype.
+                    </p>
+                    <p>
+                        I currently work as a hardware engineer in the Robot Learning division of the ETH Robotics Club, where I help design and build bimanual humanoid platforms for imitation-learning research. Outside of that, I build my own robotic projects to keep learning across mechanical design, electronics, and control.
+                    </p>
+                    </p>
+                        When I'm not working on a project or school work im either skiing, in the gym, traveling or trying to get the hang of the latest software and tools to aid my work. 
                 </div>
-            </a>
-
-            <a href="#bimanual" class="project-item">
-                <span class="project-year">2025</span>
-                <div>
-                    <div class="project-title">Bimanual Robot Learning Setup</div>
-                    <div class="project-desc">Dual-arm humanoid hardware platform for imitation-learning research at the ETH Robotics Club.</div>
-                </div>
-            </a>
-
-        </div>
-    </section>
-
-
-    <!-- EDUCATION -->
-    <section id="education">
-        <div class="eyebrow">background</div>
-        <h1>Education</h1>
-
-        <div class="edu-list">
-
-            <div class="edu-box">
-                <div class="edu-header">
-                    <span class="edu-institution">ETH Zürich</span>
-                    <span class="edu-dates">2023 — present</span>
-                </div>
-                <div class="edu-degree">B.Sc. Mechanical Engineering</div>
-                <p class="edu-desc">
-                    [Filler — coursework in control systems, dynamics, and machine learning. Add GPA, relevant courses, or thesis topic here.]
-                </p>
+                <img src="me.jpg" alt="Kai Russenberger" class="about-photo">
             </div>
 
-            <div class="edu-box">
-                <div class="edu-header">
-                    <span class="edu-institution">[Previous School]</span>
-                    <span class="edu-dates">YYYY — YYYY</span>
-                </div>
-                <div class="edu-degree">[Matura / Diploma / Programme]</div>
-                <p class="edu-desc">
-                    [Filler — short note on focus areas, awards, or extracurricular activities.]
-                </p>
+            <div class="contact-links">
+                <a href="mailto:krussenberge@student.ethz.ch">email</a>
+                <a href="https://github.com/kairussenberger" target="_blank" rel="noopener">github</a>
+                <a href="https://www.linkedin.com/in/kai-russenberger-a4682b249/" target="_blank" rel="noopener">linkedin</a>
+                <a href="cv.pdf" target="_blank" rel="noopener">cv</a>
             </div>
+        </section>
 
-            <div class="edu-box">
-                <div class="edu-header">
-                    <span class="edu-institution">[Additional entry]</span>
-                    <span class="edu-dates">YYYY</span>
-                </div>
-                <div class="edu-degree">[Programme / Exchange / Certificate]</div>
-                <p class="edu-desc">
-                    [Filler — describe a summer school, exchange, or certification.]
-                </p>
+
+        <!-- PROJECTS -->
+        <section id="projects">
+            <div class="eyebrow">selected works</div>
+            <h1>Projects</h1>
+
+            <div class="project-list">
+
+                <a href="#hexapod" class="project-item">
+                    <span class="project-year">2025</span>
+                    <div>
+                        <div class="project-title">Hexapod</div>
+                        <div class="project-desc">Six-legged walking robot — mechanical design, electronics, and gait control.</div>
+                    </div>
+                </a>
+
+                <a href="#bimanual" class="project-item">
+                    <span class="project-year">2025</span>
+                    <div>
+                        <div class="project-title">Bimanual Robot Learning Setup</div>
+                        <div class="project-desc">Dual-arm humanoid hardware platform for imitation-learning research at the ETH Robotics Club.</div>
+                    </div>
+                </a>
+
             </div>
+        </section>
 
-        </div>
-    </section>
 
+        <!-- EDUCATION -->
+        <section id="education">
+            <div class="eyebrow">background</div>
+            <h1>Education</h1>
+
+            <div class="edu-list">
+
+                <div class="edu-box">
+                    <div class="edu-header">
+                        <span class="edu-institution">ETH Zürich</span>
+                        <span class="edu-dates">2023 — present</span>
+                    </div>
+                    <div class="edu-degree">B.Sc. Mechanical Engineering</div>
+                    <p class="edu-desc">
+                        [Filler — coursework in control systems, dynamics, and machine learning. Add GPA, relevant courses, or thesis topic here.]
+                    </p>
+                </div>
+
+                <div class="edu-box">
+                    <div class="edu-header">
+                        <span class="edu-institution">[Previous School]</span>
+                        <span class="edu-dates">YYYY — YYYY</span>
+                    </div>
+                    <div class="edu-degree">[Matura / Diploma / Programme]</div>
+                    <p class="edu-desc">
+                        [Filler — short note on focus areas, awards, or extracurricular activities.]
+                    </p>
+                </div>
+
+                <div class="edu-box">
+                    <div class="edu-header">
+                        <span class="edu-institution">[Additional entry]</span>
+                        <span class="edu-dates">YYYY</span>
+                    </div>
+                    <div class="edu-degree">[Programme / Exchange / Certificate]</div>
+                    <p class="edu-desc">
+                        [Filler — describe a summer school, exchange, or certification.]
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
 </div>
 
 
 <!-- ========== HEXAPOD DETAIL ========== -->
 <div class="detail-view" id="hexapod">
-
-    <a href="#projects" class="back-link">← back to projects</a>
-
+    <a href="#" class="back-link">← back</a>
     <div class="eyebrow">project</div>
     <h1>Hexapod</h1>
-
     <div class="project-meta">2025 · personal project</div>
 
     <p>
@@ -407,18 +378,14 @@ section:last-of-type { margin-bottom: 0; }
     <p><em>[Mechanical design — leg topology, actuators, materials.]</em></p>
     <p><em>[Electronics and control stack — MCU, IMU, gait generation.]</em></p>
     <p><em>[Link to video, repo, or write-up.]</em></p>
-
 </div>
 
 
 <!-- ========== BIMANUAL DETAIL ========== -->
 <div class="detail-view" id="bimanual">
-
-    <a href="#projects" class="back-link">← back to projects</a>
-
+    <a href="#" class="back-link">← back</a>
     <div class="eyebrow">project</div>
     <h1>Bimanual Robot Learning Setup</h1>
-
     <div class="project-meta">2025 · ETH Robotics Club — Robot Learning division</div>
 
     <p>
@@ -437,12 +404,11 @@ section:last-of-type { margin-bottom: 0; }
     <p>
         <a href="https://github.com/YOUR_REPOSITORY" target="_blank" rel="noopener">project repository →</a>
     </p>
-
 </div>
 
 
 <script>
-/* ---------- routing: detail pages vs. single-page sections ---------- */
+/* ---------- detail-page routing ---------- */
 const DETAIL_IDS = ['hexapod', 'bimanual'];
 const SECTION_IDS = ['about', 'projects', 'education'];
 
@@ -452,57 +418,39 @@ function route() {
     const allDetails = document.querySelectorAll('.detail-view');
 
     if (DETAIL_IDS.includes(hash)) {
-        // show project detail page, hide main
         main.classList.add('hidden');
         allDetails.forEach(v => v.classList.remove('active'));
         document.getElementById(hash).classList.add('active');
         window.scrollTo(0, 0);
+        setActiveTab('projects');
     } else {
-        // show main page, hide detail pages
         main.classList.remove('hidden');
         allDetails.forEach(v => v.classList.remove('active'));
-
-        if (SECTION_IDS.includes(hash)) {
-            // smooth-scroll handled by CSS; trigger jump
-            const target = document.getElementById(hash);
-            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        // browser handles scroll to #about / #projects / #education natively
     }
 }
 
 window.addEventListener('hashchange', route);
-window.addEventListener('load', route);
+window.addEventListener('DOMContentLoaded', route);
 
 
-/* ---------- scroll-spy: highlight active nav link ---------- */
+/* ---------- scroll-spy for active tab on main page ---------- */
 const navLinks = document.querySelectorAll('.topnav a');
-const sections = SECTION_IDS.map(id => document.getElementById(id));
 
 function setActiveTab(id) {
     navLinks.forEach(a => a.classList.toggle('active', a.dataset.tab === id));
 }
 
 const observer = new IntersectionObserver((entries) => {
-    // only update when main content is visible
     if (document.getElementById('main').classList.contains('hidden')) return;
-
     entries.forEach(entry => {
         if (entry.isIntersecting) setActiveTab(entry.target.id);
     });
-}, {
-    rootMargin: '-40% 0px -55% 0px',
-    threshold: 0
-});
+}, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
 
-sections.forEach(s => s && observer.observe(s));
-
-// when viewing a project detail page, force "projects" tab active
-const detailObserver = new MutationObserver(() => {
-    const anyDetailActive = document.querySelector('.detail-view.active');
-    if (anyDetailActive) setActiveTab('projects');
-});
-document.querySelectorAll('.detail-view').forEach(d => {
-    detailObserver.observe(d, { attributes: true, attributeFilter: ['class'] });
+SECTION_IDS.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
 });
 
 

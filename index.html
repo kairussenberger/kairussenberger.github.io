@@ -1,220 +1,488 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kai Russenberger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
 
-body{
-    font-family: Georgia, serif;
-    max-width: 820px;
-    margin: 60px auto;
-    line-height: 1.6;
-    color: #222;
+body {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 56px 28px 120px;
+    line-height: 1.65;
+    color: #1a1a1a;
+    background: #ffffff;
+    position: relative;
+    overflow-x: hidden;
+    font-size: 14.5px;
+    font-weight: 400;
 }
 
-h1{
-    font-size: 38px;
-    margin-bottom: 5px;
+/* ---------- top navigation ---------- */
+.topnav {
+    display: flex;
+    gap: 28px;
+    margin-bottom: 64px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
 }
 
-h2{
-    margin-top: 40px;
-    color: #b30000;   /* MAIN RED COLOR */
+.topnav a {
+    color: #999;
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-a{
+.topnav a:hover { color: #1a1a1a; }
+
+.topnav a.active {
+    color: #b30000;
+    border-bottom-color: #b30000;
+}
+
+/* ---------- section labels ---------- */
+.eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: lowercase;
+    letter-spacing: 0.08em;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.eyebrow::before { content: "// "; color: #b30000; }
+
+h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 30px;
+    font-weight: 600;
+    margin: 0 0 32px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+    color: #999;
+    margin: 56px 0 18px;
+}
+
+p {
+    margin: 14px 0;
+    color: #333;
+    font-size: 14.5px;
+}
+
+a {
     color: #b30000;
     text-decoration: none;
+    transition: opacity 0.15s ease;
 }
 
-a:hover{
-    text-decoration: underline;
+a:hover { opacity: 0.6; }
+
+/* ---------- about (with photo) ---------- */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 32px;
+    align-items: start;
 }
 
-.nav{
-    margin-bottom: 40px;
+.about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    border-radius: 4px;
+    background: #f3f3f3;
+    filter: grayscale(8%);
 }
 
-.nav a{
-    margin-right: 18px;
-    font-weight: bold;
+.contact-links {
+    margin-top: 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    font-size: 13px;
 }
 
-.section{
-    margin-bottom: 30px;
+.contact-links a::before { content: "↗ "; color: #b30000; }
+
+/* ---------- project list ---------- */
+.project-list { border-top: 1px solid #eaeaea; }
+
+.project-item {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 16px;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid #eaeaea;
+    color: #1a1a1a;
+    transition: background 0.15s ease, padding 0.15s ease;
 }
 
-.pub{
-    margin-bottom: 12px;
+.project-item:hover {
+    background: #fafafa;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
-#particle-bg{
+.project-year { color: #999; font-size: 13px; }
+.project-title { font-weight: 600; font-size: 14.5px; }
+.project-desc { color: #666; font-size: 13px; margin-top: 4px; }
+
+/* ---------- education boxes ---------- */
+.edu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.edu-box {
+    border: 1px solid #eaeaea;
+    border-left: 3px solid #b30000;
+    background: #fafafa;
+    padding: 20px 22px;
+    border-radius: 4px;
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.edu-box:hover { background: #f5f5f5; }
+
+.edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 6px;
+}
+
+.edu-institution {
+    font-weight: 600;
+    font-size: 14.5px;
+    color: #1a1a1a;
+}
+
+.edu-dates {
+    font-size: 12px;
+    color: #999;
+}
+
+.edu-degree {
+    font-size: 13px;
+    color: #b30000;
+    margin-bottom: 8px;
+}
+
+.edu-desc {
+    font-size: 13px;
+    color: #555;
+    margin: 0;
+}
+
+/* ---------- project detail ---------- */
+.back-link {
+    display: inline-block;
+    margin-bottom: 36px;
+    font-size: 13px;
+    color: #888;
+}
+
+.back-link:hover { color: #b30000; opacity: 1; }
+
+.project-meta { color: #888; font-size: 13px; margin-bottom: 28px; }
+
+.project-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin: 36px 0;
+}
+
+.project-images img,
+.image-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 4px;
+    background: #f3f3f3;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #bbb;
+    font-size: 12px;
+}
+
+/* ---------- view routing ---------- */
+.view { display: none; }
+.view.active { display: block; }
+
+/* ---------- particles ---------- */
+#particle-bg {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0; left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
     pointer-events: none;
 }
 
-body{
-    background: #ffffff;
-    position: relative;
-    overflow-x: hidden;
+/* ---------- responsive ---------- */
+@media (max-width: 560px) {
+    body { padding: 40px 22px 80px; font-size: 14px; }
+    h1 { font-size: 26px; }
+    .about-grid { grid-template-columns: 1fr; gap: 24px; }
+    .about-photo { max-width: 200px; aspect-ratio: 1; }
+    .project-item { grid-template-columns: 56px 1fr; gap: 12px; }
+    .topnav { gap: 20px; }
 }
-
 </style>
 </head>
-
 <body>
 
 <canvas id="particle-bg"></canvas>
 
-<h1>Kai Russenberger</h1>
-
-<div class="nav">
-<a href="#about">About</a>
-<a href="#research">Research</a>
-<a href="#projects">Projects</a>
-<a href="#publications">Publications</a>
-<a href="#contact">Contact</a>
-</div>
+<!-- ========== TOP NAV ========== -->
+<nav class="topnav">
+    <a href="#about" data-tab="about">about</a>
+    <a href="#projects" data-tab="projects">projects</a>
+    <a href="#education" data-tab="education">education</a>
+</nav>
 
 
-<div class="section" id="about">
+<!-- ========== ABOUT ========== -->
+<div class="view active" id="about">
 
-<h2>About</h2>
+    <div class="eyebrow">introduction</div>
+    <h1>Kai Russenberger</h1>
 
-<p>
-I am a Mechanical Engineering student at 
-<a href="https://ethz.ch">ETH Zürich</a>.
-</p>
+    <div class="about-grid">
+        <div>
+            <p>
+                I'm a Mechanical Engineering student at <a href="https://ethz.ch" target="_blank" rel="noopener">ETH Zürich</a>, focused on the intersection of robotic hardware, control, and machine learning. I enjoy taking robotic systems from the first sketch on paper all the way to a working prototype.
+            </p>
+            <p>
+                I currently work as a hardware engineer in the Robot Learning division of the ETH Robotics Club, where I help design and build bimanual humanoid platforms for imitation-learning research. Outside of that, I build my own robotic projects to keep learning across mechanical design, electronics, and control.
+            </p>
+        </div>
+        <img src="me.jpg" alt="Kai Russenberger" class="about-photo">
+    </div>
 
-<p>
-My interests include robotics, mechanical design, and control systems.
-</p>
-
-</div>
-
-
-
-<div class="section" id="research">
-
-<h2>Research Interests</h2>
-
-<ul>
-<li>Robotics</li>
-<li>Mechanical systems</li>
-<li>Control theory</li>
-<li>Machine learning for robotics</li>
-</ul>
+    <div class="contact-links">
+        <a href="mailto:krussenberge@student.ethz.ch">email</a>
+        <a href="https://github.com/kairussenberger" target="_blank" rel="noopener">github</a>
+        <a href="https://www.linkedin.com/in/kai-russenberger-a4682b249/" target="_blank" rel="noopener">linkedin</a>
+        <a href="cv.pdf" target="_blank" rel="noopener">cv</a>
+    </div>
 
 </div>
 
 
+<!-- ========== PROJECTS ========== -->
+<div class="view" id="projects">
 
-<div class="section" id="projects">
+    <div class="eyebrow">selected works</div>
+    <h1>Projects</h1>
 
-<h2>Projects</h2>
+    <div class="project-list">
 
-<div class="pub">
-<b>Bimanual Humanoid</b><br>
-I'm currently working on a bimanual humanoid setup as a hardware engineer under the Robot Learing division of the ETH Robotics Club.<br>
+        <a href="#hexapod" class="project-item">
+            <span class="project-year">2025</span>
+            <div>
+                <div class="project-title">Hexapod</div>
+                <div class="project-desc">Six-legged walking robot — mechanical design, electronics, and gait control.</div>
+            </div>
+        </a>
 
-<!-- PROJECT LINK HERE -->
-<a href="https://github.com/YOUR_REPOSITORY">Project repository</a>
+        <a href="#bimanual" class="project-item">
+            <span class="project-year">2025</span>
+            <div>
+                <div class="project-title">Bimanual Robot Learning Setup</div>
+                <div class="project-desc">Dual-arm humanoid hardware platform for imitation-learning research at the ETH Robotics Club.</div>
+            </div>
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- ========== EDUCATION ========== -->
+<div class="view" id="education">
+
+    <div class="eyebrow">background</div>
+    <h1>Education</h1>
+
+    <div class="edu-list">
+
+        <div class="edu-box">
+            <div class="edu-header">
+                <span class="edu-institution">ETH Zürich</span>
+                <span class="edu-dates">2023 — present</span>
+            </div>
+            <div class="edu-degree">B.Sc. Mechanical Engineering</div>
+            <p class="edu-desc">
+                [Filler — coursework in control systems, dynamics, and machine learning. Add GPA, relevant courses, or thesis topic here.]
+            </p>
+        </div>
+
+        <div class="edu-box">
+            <div class="edu-header">
+                <span class="edu-institution">[Previous School]</span>
+                <span class="edu-dates">YYYY — YYYY</span>
+            </div>
+            <div class="edu-degree">[Matura / Diploma / Programme]</div>
+            <p class="edu-desc">
+                [Filler — short note on focus areas, awards, or extracurricular activities.]
+            </p>
+        </div>
+
+        <div class="edu-box">
+            <div class="edu-header">
+                <span class="edu-institution">[Additional entry]</span>
+                <span class="edu-dates">YYYY</span>
+            </div>
+            <div class="edu-degree">[Programme / Exchange / Certificate]</div>
+            <p class="edu-desc">
+                [Filler — describe a summer school, exchange, or certification.]
+            </p>
+        </div>
+
+    </div>
+
 </div>
 
 
+<!-- ========== HEXAPOD ========== -->
+<div class="view" id="hexapod">
 
-<div class="section" id="publications">
+    <a href="#projects" class="back-link">← back to projects</a>
 
-<h2>Publications</h2>
+    <div class="eyebrow">project</div>
+    <h1>Hexapod</h1>
 
-Coming Soon!
-</div>
+    <div class="project-meta">2025 · personal project</div>
 
-</div>
+    <p>
+        A six-legged walking robot built from the ground up — covering mechanical design, electronics integration, and locomotion control. <em>[Replace this paragraph with a short overview.]</em>
+    </p>
 
+    <div class="project-images">
+        <div class="image-placeholder">Image 1</div>
+        <div class="image-placeholder">Image 2</div>
+        <div class="image-placeholder">Image 3</div>
+    </div>
 
-
-<div class="section" id="contact">
-
-<h2>Contact</h2>
-
-<p>
-Email: krussenberge@student.ethz.ch<br>
-Mobile: +41 76 478 28 45
-</p>
-
-<p>
-
-<!-- LINKEDIN -->
-<a href="https://www.linkedin.com/in/kai-russenberger-a4682b249/">LinkedIn</a>
-
-|
-
-<!-- GITHUB -->
-<a href="https://github.com/kairussenberger">GitHub</a>
-
-|
-
-<!-- CV -->
-<a href="cv.pdf">CV</a>
-
-</p>
+    <h2>highlights</h2>
+    <p><em>[Mechanical design — leg topology, actuators, materials.]</em></p>
+    <p><em>[Electronics and control stack — MCU, IMU, gait generation.]</em></p>
+    <p><em>[Link to video, repo, or write-up.]</em></p>
 
 </div>
+
+
+<!-- ========== BIMANUAL ========== -->
+<div class="view" id="bimanual">
+
+    <a href="#projects" class="back-link">← back to projects</a>
+
+    <div class="eyebrow">project</div>
+    <h1>Bimanual Robot Learning Setup</h1>
+
+    <div class="project-meta">2025 · ETH Robotics Club — Robot Learning division</div>
+
+    <p>
+        A bimanual humanoid platform built as a research testbed for imitation and reinforcement learning. I'm contributing as a hardware engineer, working on the mechanical design and integration of the dual-arm upper body.
+    </p>
+
+    <div class="project-images">
+        <div class="image-placeholder">Image 1</div>
+        <div class="image-placeholder">Image 2</div>
+        <div class="image-placeholder">Image 3</div>
+    </div>
+
+    <h2>highlights</h2>
+    <p><em>[Kinematic layout — DOF per arm, end-effectors, sensing.]</em></p>
+    <p><em>[Learning experiments the platform is intended to support.]</em></p>
+    <p>
+        <a href="https://github.com/YOUR_REPOSITORY" target="_blank" rel="noopener">project repository →</a>
+    </p>
+
+</div>
+
 
 <script>
+/* ---------- hash routing + active tab ---------- */
+const TAB_FOR_VIEW = {
+    about: 'about',
+    projects: 'projects',
+    education: 'education',
+    hexapod: 'projects',
+    bimanual: 'projects'
+};
+
+function showView() {
+    const hash = window.location.hash.slice(1) || 'about';
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    const target = document.getElementById(hash) || document.getElementById('about');
+    target.classList.add('active');
+
+    const activeTab = TAB_FOR_VIEW[hash] || 'about';
+    document.querySelectorAll('.topnav a').forEach(a => {
+        a.classList.toggle('active', a.dataset.tab === activeTab);
+    });
+
+    window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', showView);
+window.addEventListener('load', showView);
+
+
+/* ---------- particle background (unchanged) ---------- */
 const canvas = document.getElementById("particle-bg");
 const ctx = canvas.getContext("2d");
 
 let particles = [];
-let mouse = {
-    x: null,
-    y: null,
-    radius: 120
-};
+let mouse = { x: null, y: null, radius: 120 };
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 }
-
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
-window.addEventListener("mousemove", function(e) {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-});
-
-window.addEventListener("mouseleave", function() {
-    mouse.x = null;
-    mouse.y = null;
-});
+window.addEventListener("mousemove", e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+window.addEventListener("mouseleave", () => { mouse.x = null; mouse.y = null; });
 
 class Particle {
     constructor() {
         this.baseX = Math.random() * canvas.width;
         this.baseY = Math.random() * canvas.height;
-        this.x = this.baseX;
-        this.y = this.baseY;
-        this.vx = 0;
-        this.vy = 0;
+        this.x = this.baseX; this.y = this.baseY;
+        this.vx = 0; this.vy = 0;
         this.size = Math.random() * 2 + 0.8;
     }
-
     update() {
         if (mouse.x !== null && mouse.y !== null) {
-            let dx = this.x - mouse.x;
-            let dy = this.y - mouse.y;
-            let dist = Math.sqrt(dx * dx + dy * dy);
-
+            let dx = this.x - mouse.x, dy = this.y - mouse.y;
+            let dist = Math.sqrt(dx*dx + dy*dy);
             if (dist < mouse.radius && dist > 0) {
                 let force = (mouse.radius - dist) / mouse.radius;
                 let angle = Math.atan2(dy, dx);
@@ -222,20 +490,11 @@ class Particle {
                 this.vy += Math.sin(angle) * force * 0.8;
             }
         }
-
-        let returnForceX = (this.baseX - this.x) * 0.01;
-        let returnForceY = (this.baseY - this.y) * 0.01;
-
-        this.vx += returnForceX;
-        this.vy += returnForceY;
-
-        this.vx *= 0.92;
-        this.vy *= 0.92;
-
-        this.x += this.vx;
-        this.y += this.vy;
+        this.vx += (this.baseX - this.x) * 0.01;
+        this.vy += (this.baseY - this.y) * 0.01;
+        this.vx *= 0.92; this.vy *= 0.92;
+        this.x += this.vx; this.y += this.vy;
     }
-
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
@@ -247,30 +506,18 @@ class Particle {
 function initParticles() {
     particles = [];
     const count = Math.floor((canvas.width * canvas.height) / 8000);
-
-    for (let i = 0; i < count; i++) {
-        particles.push(new Particle());
-    }
+    for (let i = 0; i < count; i++) particles.push(new Particle());
 }
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    for (const p of particles) {
-        p.update();
-        p.draw();
-    }
-
+    for (const p of particles) { p.update(); p.draw(); }
     requestAnimationFrame(animate);
 }
 
 initParticles();
 animate();
-
-window.addEventListener("resize", () => {
-    resizeCanvas();
-    initParticles();
-});
+window.addEventListener("resize", () => { resizeCanvas(); initParticles(); });
 </script>
 
 </body>

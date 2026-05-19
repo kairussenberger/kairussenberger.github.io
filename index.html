@@ -11,6 +11,7 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
 body {
     font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -34,6 +35,14 @@ body {
     font-size: 13px;
     font-weight: 500;
     letter-spacing: 0.02em;
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 16px 0;
+    margin-top: -16px;
+    z-index: 10;
 }
 
 .topnav a {
@@ -44,12 +53,15 @@ body {
     transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-.topnav a:hover { color: #1a1a1a; }
+.topnav a:hover { color: #1a1a1a; opacity: 1; }
 
 .topnav a.active {
     color: #b30000;
     border-bottom-color: #b30000;
 }
+
+/* offset for sticky nav when jumping to anchors */
+section[id] { scroll-margin-top: 80px; }
 
 /* ---------- section labels ---------- */
 .eyebrow {
@@ -94,6 +106,10 @@ a {
 }
 
 a:hover { opacity: 0.6; }
+
+/* ---------- section spacing ---------- */
+section { margin-bottom: 88px; }
+section:last-of-type { margin-bottom: 0; }
 
 /* ---------- about (with photo) ---------- */
 .about-grid {
@@ -159,7 +175,7 @@ a:hover { opacity: 0.6; }
     background: #fafafa;
     padding: 20px 22px;
     border-radius: 4px;
-    transition: background 0.15s ease, transform 0.15s ease;
+    transition: background 0.15s ease;
 }
 
 .edu-box:hover { background: #f5f5f5; }
@@ -179,10 +195,7 @@ a:hover { opacity: 0.6; }
     color: #1a1a1a;
 }
 
-.edu-dates {
-    font-size: 12px;
-    color: #999;
-}
+.edu-dates { font-size: 12px; color: #999; }
 
 .edu-degree {
     font-size: 13px;
@@ -229,9 +242,10 @@ a:hover { opacity: 0.6; }
     font-size: 12px;
 }
 
-/* ---------- view routing ---------- */
-.view { display: none; }
-.view.active { display: block; }
+/* ---------- view routing for project detail pages ---------- */
+.detail-view { display: none; }
+.detail-view.active { display: block; }
+.main-content.hidden { display: none; }
 
 /* ---------- particles ---------- */
 #particle-bg {
@@ -251,6 +265,7 @@ a:hover { opacity: 0.6; }
     .about-photo { max-width: 200px; aspect-ratio: 1; }
     .project-item { grid-template-columns: 56px 1fr; gap: 12px; }
     .topnav { gap: 20px; }
+    section { margin-bottom: 64px; }
 }
 </style>
 </head>
@@ -266,111 +281,110 @@ a:hover { opacity: 0.6; }
 </nav>
 
 
-<!-- ========== ABOUT ========== -->
-<div class="view active" id="about">
+<!-- ========== MAIN (single scrollable page) ========== -->
+<div class="main-content" id="main">
 
-    <div class="eyebrow">introduction</div>
-    <h1>Kai Russenberger</h1>
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="eyebrow">introduction</div>
+        <h1>Kai Russenberger</h1>
 
-    <div class="about-grid">
-        <div>
-            <p>
-                I'm a Mechanical Engineering student at <a href="https://ethz.ch" target="_blank" rel="noopener">ETH Zürich</a>, focused on the intersection of robotic hardware, control, and machine learning. I enjoy taking robotic systems from the first sketch on paper all the way to a working prototype.
-            </p>
-            <p>
-                I currently work as a hardware engineer in the Robot Learning division of the ETH Robotics Club, where I help design and build bimanual humanoid platforms for imitation-learning research. Outside of that, I build my own robotic projects to keep learning across mechanical design, electronics, and control.
-            </p>
-        </div>
-        <img src="me.png" alt="Kai Russenberger" class="about-photo">
-    </div>
-
-    <div class="contact-links">
-        <a href="mailto:krussenberge@student.ethz.ch">email</a>
-        <a href="https://github.com/kairussenberger" target="_blank" rel="noopener">github</a>
-        <a href="https://www.linkedin.com/in/kai-russenberger-a4682b249/" target="_blank" rel="noopener">linkedin</a>
-        <a href="cv.pdf" target="_blank" rel="noopener">cv</a>
-    </div>
-
-</div>
-
-
-<!-- ========== PROJECTS ========== -->
-<div class="view" id="projects">
-
-    <div class="eyebrow">selected works</div>
-    <h1>Projects</h1>
-
-    <div class="project-list">
-
-        <a href="#hexapod" class="project-item">
-            <span class="project-year">2025</span>
+        <div class="about-grid">
             <div>
-                <div class="project-title">Hexapod</div>
-                <div class="project-desc">Six-legged walking robot — mechanical design, electronics, and gait control.</div>
+                <p>
+                    I'm a Mechanical Engineering student at <a href="https://ethz.ch" target="_blank" rel="noopener">ETH Zürich</a>, focused on the intersection of robotic hardware, control, and machine learning. I enjoy taking robotic systems from the first sketch on paper all the way to a working prototype.
+                </p>
+                <p>
+                    I currently work as a hardware engineer in the Robot Learning division of the ETH Robotics Club, where I help design and build bimanual humanoid platforms for imitation-learning research. Outside of that, I build my own robotic projects to keep learning across mechanical design, electronics, and control.
+                </p>
             </div>
-        </a>
+            <img src="me.png" alt="Kai Russenberger" class="about-photo">
+        </div>
 
-        <a href="#bimanual" class="project-item">
-            <span class="project-year">2025</span>
-            <div>
-                <div class="project-title">Bimanual Robot Learning Setup</div>
-                <div class="project-desc">Dual-arm humanoid hardware platform for imitation-learning research at the ETH Robotics Club.</div>
+        <div class="contact-links">
+            <a href="mailto:krussenberge@student.ethz.ch">email</a>
+            <a href="https://github.com/kairussenberger" target="_blank" rel="noopener">github</a>
+            <a href="https://www.linkedin.com/in/kai-russenberger-a4682b249/" target="_blank" rel="noopener">linkedin</a>
+            <a href="cv.pdf" target="_blank" rel="noopener">cv</a>
+        </div>
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects">
+        <div class="eyebrow">selected works</div>
+        <h1>Projects</h1>
+
+        <div class="project-list">
+
+            <a href="#hexapod" class="project-item">
+                <span class="project-year">2025</span>
+                <div>
+                    <div class="project-title">Hexapod</div>
+                    <div class="project-desc">Six-legged walking robot — mechanical design, electronics, and gait control.</div>
+                </div>
+            </a>
+
+            <a href="#bimanual" class="project-item">
+                <span class="project-year">2025</span>
+                <div>
+                    <div class="project-title">Bimanual Robot Learning Setup</div>
+                    <div class="project-desc">Dual-arm humanoid hardware platform for imitation-learning research at the ETH Robotics Club.</div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section id="education">
+        <div class="eyebrow">background</div>
+        <h1>Education</h1>
+
+        <div class="edu-list">
+
+            <div class="edu-box">
+                <div class="edu-header">
+                    <span class="edu-institution">ETH Zürich</span>
+                    <span class="edu-dates">2023 — present</span>
+                </div>
+                <div class="edu-degree">B.Sc. Mechanical Engineering</div>
+                <p class="edu-desc">
+                    [Filler — coursework in control systems, dynamics, and machine learning. Add GPA, relevant courses, or thesis topic here.]
+                </p>
             </div>
-        </a>
 
-    </div>
+            <div class="edu-box">
+                <div class="edu-header">
+                    <span class="edu-institution">[Previous School]</span>
+                    <span class="edu-dates">YYYY — YYYY</span>
+                </div>
+                <div class="edu-degree">[Matura / Diploma / Programme]</div>
+                <p class="edu-desc">
+                    [Filler — short note on focus areas, awards, or extracurricular activities.]
+                </p>
+            </div>
+
+            <div class="edu-box">
+                <div class="edu-header">
+                    <span class="edu-institution">[Additional entry]</span>
+                    <span class="edu-dates">YYYY</span>
+                </div>
+                <div class="edu-degree">[Programme / Exchange / Certificate]</div>
+                <p class="edu-desc">
+                    [Filler — describe a summer school, exchange, or certification.]
+                </p>
+            </div>
+
+        </div>
+    </section>
 
 </div>
 
 
-<!-- ========== EDUCATION ========== -->
-<div class="view" id="education">
-
-    <div class="eyebrow">background</div>
-    <h1>Education</h1>
-
-    <div class="edu-list">
-
-        <div class="edu-box">
-            <div class="edu-header">
-                <span class="edu-institution">ETH Zürich</span>
-                <span class="edu-dates">2023 — present</span>
-            </div>
-            <div class="edu-degree">B.Sc. Mechanical Engineering</div>
-            <p class="edu-desc">
-                [Filler — coursework in control systems, dynamics, and machine learning. Add GPA, relevant courses, or thesis topic here.]
-            </p>
-        </div>
-
-        <div class="edu-box">
-            <div class="edu-header">
-                <span class="edu-institution">[Previous School]</span>
-                <span class="edu-dates">YYYY — YYYY</span>
-            </div>
-            <div class="edu-degree">[Matura / Diploma / Programme]</div>
-            <p class="edu-desc">
-                [Filler — short note on focus areas, awards, or extracurricular activities.]
-            </p>
-        </div>
-
-        <div class="edu-box">
-            <div class="edu-header">
-                <span class="edu-institution">[Additional entry]</span>
-                <span class="edu-dates">YYYY</span>
-            </div>
-            <div class="edu-degree">[Programme / Exchange / Certificate]</div>
-            <p class="edu-desc">
-                [Filler — describe a summer school, exchange, or certification.]
-            </p>
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ========== HEXAPOD ========== -->
-<div class="view" id="hexapod">
+<!-- ========== HEXAPOD DETAIL ========== -->
+<div class="detail-view" id="hexapod">
 
     <a href="#projects" class="back-link">← back to projects</a>
 
@@ -397,8 +411,8 @@ a:hover { opacity: 0.6; }
 </div>
 
 
-<!-- ========== BIMANUAL ========== -->
-<div class="view" id="bimanual">
+<!-- ========== BIMANUAL DETAIL ========== -->
+<div class="detail-view" id="bimanual">
 
     <a href="#projects" class="back-link">← back to projects</a>
 
@@ -428,30 +442,68 @@ a:hover { opacity: 0.6; }
 
 
 <script>
-/* ---------- hash routing + active tab ---------- */
-const TAB_FOR_VIEW = {
-    about: 'about',
-    projects: 'projects',
-    education: 'education',
-    hexapod: 'projects',
-    bimanual: 'projects'
-};
+/* ---------- routing: detail pages vs. single-page sections ---------- */
+const DETAIL_IDS = ['hexapod', 'bimanual'];
+const SECTION_IDS = ['about', 'projects', 'education'];
 
-function showView() {
-    const hash = window.location.hash.slice(1) || 'about';
-    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
-    const target = document.getElementById(hash) || document.getElementById('about');
-    target.classList.add('active');
+function route() {
+    const hash = window.location.hash.slice(1);
+    const main = document.getElementById('main');
+    const allDetails = document.querySelectorAll('.detail-view');
 
-    const activeTab = TAB_FOR_VIEW[hash] || 'about';
-    document.querySelectorAll('.topnav a').forEach(a => {
-        a.classList.toggle('active', a.dataset.tab === activeTab);
-    });
+    if (DETAIL_IDS.includes(hash)) {
+        // show project detail page, hide main
+        main.classList.add('hidden');
+        allDetails.forEach(v => v.classList.remove('active'));
+        document.getElementById(hash).classList.add('active');
+        window.scrollTo(0, 0);
+    } else {
+        // show main page, hide detail pages
+        main.classList.remove('hidden');
+        allDetails.forEach(v => v.classList.remove('active'));
 
-    window.scrollTo(0, 0);
+        if (SECTION_IDS.includes(hash)) {
+            // smooth-scroll handled by CSS; trigger jump
+            const target = document.getElementById(hash);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
 }
-window.addEventListener('hashchange', showView);
-window.addEventListener('load', showView);
+
+window.addEventListener('hashchange', route);
+window.addEventListener('load', route);
+
+
+/* ---------- scroll-spy: highlight active nav link ---------- */
+const navLinks = document.querySelectorAll('.topnav a');
+const sections = SECTION_IDS.map(id => document.getElementById(id));
+
+function setActiveTab(id) {
+    navLinks.forEach(a => a.classList.toggle('active', a.dataset.tab === id));
+}
+
+const observer = new IntersectionObserver((entries) => {
+    // only update when main content is visible
+    if (document.getElementById('main').classList.contains('hidden')) return;
+
+    entries.forEach(entry => {
+        if (entry.isIntersecting) setActiveTab(entry.target.id);
+    });
+}, {
+    rootMargin: '-40% 0px -55% 0px',
+    threshold: 0
+});
+
+sections.forEach(s => s && observer.observe(s));
+
+// when viewing a project detail page, force "projects" tab active
+const detailObserver = new MutationObserver(() => {
+    const anyDetailActive = document.querySelector('.detail-view.active');
+    if (anyDetailActive) setActiveTab('projects');
+});
+document.querySelectorAll('.detail-view').forEach(d => {
+    detailObserver.observe(d, { attributes: true, attributeFilter: ['class'] });
+});
 
 
 /* ---------- particle background (unchanged) ---------- */

@@ -291,18 +291,26 @@ section { padding: 32px 0 56px; }
             <div class="project-list">
 
                 <a href="#hexapod" class="project-item">
-                    <span class="project-year">2025</span>
+                    <span class="project-year">2026</span>
                     <div>
                         <div class="project-title">Hexapod</div>
-                        <div class="project-desc">Six-legged walking robot — mechanical design, electronics, and gait control.</div>
+                        <div class="project-desc">Six-legged walking robot — mechanical design, electronics, and gait control through inverse kinematics.</div>
                     </div>
                 </a>
 
                 <a href="#bimanual" class="project-item">
-                    <span class="project-year">2025</span>
+                    <span class="project-year">2026</span>
                     <div>
                         <div class="project-title">Bimanual Robot Learning Setup</div>
                         <div class="project-desc">Dual-arm humanoid hardware platform for imitation-learning research at the ETH Robotics Club.</div>
+                    </div>
+                </a>
+                
+                <a href="#Var" class="project-item">
+                    <span class="project-year">2026</span>
+                    <div>
+                        <div class="project-title">Hexapod</div>
+                        <div class="project-desc">Six-legged walking robot — mechanical design, electronics, and gait control through inverse kinematics.</div>
                     </div>
                 </a>
 
@@ -320,33 +328,21 @@ section { padding: 32px 0 56px; }
                 <div class="edu-box">
                     <div class="edu-header">
                         <span class="edu-institution">ETH Zürich</span>
-                        <span class="edu-dates">2023 — present</span>
+                        <span class="edu-dates">2025 — 2028</span>
                     </div>
                     <div class="edu-degree">B.Sc. Mechanical Engineering</div>
                     <p class="edu-desc">
-                        [Filler — coursework in control systems, dynamics, and machine learning. Add GPA, relevant courses, or thesis topic here.]
                     </p>
                 </div>
 
                 <div class="edu-box">
                     <div class="edu-header">
-                        <span class="edu-institution">[Previous School]</span>
-                        <span class="edu-dates">YYYY — YYYY</span>
+                        <span class="edu-institution">MNG Rämibühl</span>
+                        <span class="edu-dates">2020 — 2024</span>
                     </div>
-                    <div class="edu-degree">[Matura / Diploma / Programme]</div>
+                    <div class="edu-degree">[Matura / Immersion]</div>
                     <p class="edu-desc">
-                        [Filler — short note on focus areas, awards, or extracurricular activities.]
-                    </p>
-                </div>
-
-                <div class="edu-box">
-                    <div class="edu-header">
-                        <span class="edu-institution">[Additional entry]</span>
-                        <span class="edu-dates">YYYY</span>
-                    </div>
-                    <div class="edu-degree">[Programme / Exchange / Certificate]</div>
-                    <p class="edu-desc">
-                        [Filler — describe a summer school, exchange, or certification.]
+                        Immersion or AP/IB Track at the mathematical highschool in Zürich
                     </p>
                 </div>
 
@@ -365,7 +361,7 @@ section { padding: 32px 0 56px; }
     <div class="project-meta">2025 · personal project</div>
 
     <p>
-        A six-legged walking robot built from the ground up — covering mechanical design, electronics integration, and locomotion control. <em>[Replace this paragraph with a short overview.]</em>
+        A six-legged walking robot built from the ground up — covering mechanical design, electronics integration, and locomotion control, primarily through the derivation of inverse kinematics. The long horizon goal for this project is to equip it with a LiDAR scanner and implement obstacle recognition while moving it towards autonomous locomotion. 
     </p>
 
     <div class="project-images">
@@ -377,7 +373,10 @@ section { padding: 32px 0 56px; }
     <h2>highlights</h2>
     <p><em>[Mechanical design — leg topology, actuators, materials.]</em></p>
     <p><em>[Electronics and control stack — MCU, IMU, gait generation.]</em></p>
-    <p><em>[Link to video, repo, or write-up.]</em></p>
+    <p>
+        <a href="https://github.com/kairussenberger/HXAPD" target="_blank" rel="noopener">project repository →</a>
+    </p>
+
 </div>
 
 
@@ -386,7 +385,7 @@ section { padding: 32px 0 56px; }
     <a href="#" class="back-link">← back</a>
     <div class="eyebrow">project</div>
     <h1>Bimanual Robot Learning Setup</h1>
-    <div class="project-meta">2025 · ETH Robotics Club — Robot Learning division</div>
+    <div class="project-meta">2026 · ETH Robotics Club — Robot Learning division</div>
 
     <p>
         A bimanual humanoid platform built as a research testbed for imitation and reinforcement learning. I'm contributing as a hardware engineer, working on the mechanical design and integration of the dual-arm upper body.
@@ -406,10 +405,28 @@ section { padding: 32px 0 56px; }
     </p>
 </div>
 
+<!-- ========== MISC DETAILS ========== -->
+<div class="detail-view" id="various">
+    <a href="#" class="back-link">← back</a>
+    <div class="eyebrow">project</div>
+    <h1>Various CAD Projects</h1>
+    <div class="project-meta">2026 · Collection of Solo Projects</div>
 
+    <p>
+        An overview and collection of various CAD projects I've build or designed. Most of these can be found in the Repository linked below.
+        
+    <div class="project-images">
+        <div class="image-placeholder">Image 1</div>
+        <div class="image-placeholder">Image 2</div>
+        <div class="image-placeholder">Image 3</div>
+    </div>
+    <p>
+        <a href="https://github.com/YOUR_REPOSITORY" target="_blank" rel="noopener">project repository →</a>
+    </p>
+</div>
 <script>
 /* ---------- detail-page routing ---------- */
-const DETAIL_IDS = ['hexapod', 'bimanual'];
+const DETAIL_IDS = ['hexapod', 'bimanual', 'various'];
 const SECTION_IDS = ['about', 'projects', 'education'];
 
 function route() {

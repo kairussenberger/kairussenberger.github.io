@@ -252,6 +252,7 @@ section { padding: 32px 0 56px; }
         <nav class="topnav">
             <a href="#about" data-tab="about">about</a>
             <a href="#projects" data-tab="projects">projects</a>
+            <a href="#experience" data-tab="experience">experience</a>
             <a href="#education" data-tab="education">education</a>
         </nav>
 
@@ -306,11 +307,11 @@ section { padding: 32px 0 56px; }
                     </div>
                 </a>
                 
-                <a href="#Var" class="project-item">
+                <a href="#various" class="project-item">
                     <span class="project-year">2026</span>
                     <div>
-                        <div class="project-title">Hexapod</div>
-                        <div class="project-desc">Six-legged walking robot — mechanical design, electronics, and gait control through inverse kinematics.</div>
+                        <div class="project-title">Various CAD Projects</div>
+                        <div class="project-desc">A collection of solo CAD projects — mechanical design, prototyping, and CAD modeling.</div>
                     </div>
                 </a>
 
@@ -318,7 +319,40 @@ section { padding: 32px 0 56px; }
         </section>
 
 
-        <!-- EDUCATION -->
+        <!-- EXPERIENCE -->
+            <section id="experience">
+                <div class="eyebrow">work</div>
+                <h1>Experience</h1>
+
+                <div class="edu-list">
+
+                    <div class="edu-box">
+                        <div class="edu-header">
+                            <span class="edu-institution">ETH Robotics Club — Robot Learning</span>
+                            <span class="edu-dates">2025 — Present</span>
+                        </div>
+                        <div class="edu-degree">Hardware Engineer</div>
+                        <p class="edu-desc">
+                            Designing and building bimanual humanoid platforms for imitation-learning research.
+                        </p>
+                    </div>
+
+                    <div class="edu-box">
+                        <div class="edu-header">
+                            <span class="edu-institution">[Company / Organization]</span>
+                            <span class="edu-dates">[Year — Year]</span>
+                        </div>
+                        <div class="edu-degree">[Role / Position]</div>
+                        <p class="edu-desc">
+                            [Brief description of responsibilities and accomplishments.]
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- EDUCATION -->
         <section id="education">
             <div class="eyebrow">background</div>
             <h1>Education</h1>
@@ -427,7 +461,7 @@ section { padding: 32px 0 56px; }
 <script>
 /* ---------- detail-page routing ---------- */
 const DETAIL_IDS = ['hexapod', 'bimanual', 'various'];
-const SECTION_IDS = ['about', 'projects', 'education'];
+const SECTION_IDS = ['about', 'projects', 'experience', 'education'];
 
 function route() {
     const hash = window.location.hash.slice(1);

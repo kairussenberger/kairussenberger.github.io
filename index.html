@@ -307,6 +307,14 @@ section { padding: 32px 0 56px; }
                     </div>
                 </a>
                 
+                <a href="#so101" class="project-item">
+                    <span class="project-year">2026</span>
+                    <div>
+                        <div class="project-title">Robot Learning with an SO101 setup</div>
+                        <div class="project-desc">SO101 leader-follower arm setup for imitation-learning experiments.</div>
+                    </div>
+                </a>
+                
                 <a href="#various" class="project-item">
                     <span class="project-year">2026</span>
                     <div>
@@ -427,7 +435,32 @@ section { padding: 32px 0 56px; }
     </p>
 </div>
 
-<!-- ========== MISC DETAILS ========== -->
+<!-- ========== SO101 DETAIL ========== -->
+        <div class="detail-view" id="so101">
+            <a href="#" class="back-link">← back</a>
+            <div class="eyebrow">project</div>
+            <h1>Robot Learning with an SO101 setup</h1>
+            <div class="project-meta">2026 · personal project</div>
+
+            <p>
+                <em>[Project description — overview of the SO101 leader-follower setup and the robot learning experiments it supports.]</em>
+            </p>
+
+            <div class="project-images">
+                <img src="so101_follower.png" alt="SO101 follower arm">
+                <img src="so101_leader.png" alt="SO101 leader arm">
+                <img src="so101_sim1.png" alt="SO101 simulation">
+            </div>
+
+            <h2>highlights</h2>
+            <p><em>[Highlight 1 — hardware setup, leader-follower configuration.]</em></p>
+            <p><em>[Highlight 2 — learning experiments and results.]</em></p>
+            <p>
+                <a href="https://github.com/YOUR_REPOSITORY" target="_blank" rel="noopener">project repository →</a>
+            </p>
+        </div>
+
+        <!-- ========== MISC DETAILS ========== -->
 <div class="detail-view" id="various">
     <a href="#" class="back-link">← back</a>
     <div class="eyebrow">project</div>
@@ -452,7 +485,7 @@ section { padding: 32px 0 56px; }
 </div>
 <script>
 /* ---------- detail-page routing ---------- */
-const DETAIL_IDS = ['hexapod', 'bimanual', 'various'];
+const DETAIL_IDS = ['hexapod', 'bimanual', 'so101', 'various'];
 const SECTION_IDS = ['about', 'projects', 'experience', 'education'];
 
 function route() {

@@ -312,7 +312,7 @@ section { padding: 32px 0 56px; }
                     <span class="project-year">2026</span>
                     <div>
                         <div class="project-title">Simulating a Bimanual Humanoid with ORCA Hands</div>
-                        <div class="project-desc">MuJoCo simulation of a bimanual humanoid with ORCA dexterous hands, driven by teleoperation.</div>
+                        <div class="project-desc">MuJoCo/Unity simulation of a bimanual humanoid with ORCA dexterous hands, driven by teleoperation through hand-tracking with an Oculus Quest 3.</div>
                     </div>
                 </a>
 
@@ -453,7 +453,7 @@ section { padding: 32px 0 56px; }
     <div class="project-meta">2026 · simulation &amp; teleoperation</div>
 
     <p>
-        <em>[Project description — add an overview of the bimanual humanoid simulation with ORCA hands here.]</em>
+        <em>Simulation of a bimanual humanoid through both Unity and Mujoco. We used a Quest 3 to track our hands, passing the wrist Quaternion to the arm and a multi-stage IK solver to move the yam arms. The video on the right shows the hands mooving successfully in Mujoco on a static rig, the video on the left is a unity scene with both hand and arm tracking. Our friends at orbit kindly let us borrow their Quest App to help with data translation. </em>
     </p>
 
     <div class="project-images">
@@ -462,10 +462,11 @@ section { padding: 32px 0 56px; }
     </div>
 
     <h2>highlights</h2>
-    <p><em>[Highlight 1 — simulation environment and ORCA hand integration.]</em></p>
-    <p><em>[Highlight 2 — teleoperation pipeline and results.]</em></p>
+    <p><em>Managed to go from 0 movement to fully functioning hands and arms andsolving our occulsion and singularity problems. Did not deploy on our robot yet. </em></p>
+    <p><em>The repository for the Mujoco section linked below contains files to teleop with your webcam or phone, while the Unity portion of the project is purely the Unity Scene with all the assets etc</em></p>
     <p>
-        <a href="https://github.com/YOUR_REPOSITORY" target="_blank" rel="noopener">project repository →</a>
+        <a href="https://github.com/kairussenberger/Orca-Yam-teleop" target="_blank" rel="noopener">Mujoco project repository →</a>
+        <a href="https://github.com/kairussenberger/Bimanual-Unity" target="_blank" rel="noopener">Unity project repository →</a>
     </p>
 </div>
 
